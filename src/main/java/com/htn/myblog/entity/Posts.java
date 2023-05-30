@@ -17,7 +17,7 @@ import java.util.Date;
 public class Posts {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "title")
@@ -29,7 +29,7 @@ public class Posts {
     @Column(name = "remark")
     private String remark;
 
-    @Column(name = "order")
+    @Column(name = "`order`")
     private Long order;
 
     @Column(name = "parent_id")

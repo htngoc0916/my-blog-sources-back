@@ -35,7 +35,8 @@ public class PostsDTO {
     @ApiModelProperty("parent Id")
     private Long parentId;
     @ApiModelProperty("use flag")
-    private String useFlag;
+    @Builder.Default
+    private String useFlag = "Y";
 
     @ApiModelProperty("nguoi tao")
     private Long regId;

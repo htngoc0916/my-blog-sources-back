@@ -12,5 +12,4 @@ public class ResponseDTO {
     private String message;
     private Integer totalCnt;
     private Object data;
-
 }

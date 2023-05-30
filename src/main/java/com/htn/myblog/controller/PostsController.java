@@ -26,7 +26,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/post")
 public class PostsController {
-    ResponseDTO responseDTO;
 
     @Autowired
     PostService postService;
@@ -50,13 +49,15 @@ public class PostsController {
     }
 
     @ApiOperation(value = "them bai viet")
-    @PostMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> savePost(@Valid PostsDTO postsDTO){
         try {
             Optional<Posts> postsOptional = postService.findById(postsDTO.getId());
             Posts posts = new Posts();
             if(postsOptional.isPresent()){
                 //update
+                posts = modelMapper.map(postsDTO, Posts.class);
+                postService.savePost(posts);
             }else{
                 //save
                 posts = modelMapper.map(postsDTO, Posts.class);
@@ -64,7 +65,7 @@ public class PostsController {
             }
 
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
-                    new ResponseDTO("FAILED", "Save post successfully", 0, posts)
+                    new ResponseDTO("OK", "Save post successfully", 0, posts)
             );
         }catch (Exception ex)
         {
