@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface PostService {
     List<Posts> findByAllDesc();
     Optional<Posts> findById(Long id);
-    void insertPost(Posts posts);
+    void savePost(Posts posts);
 }

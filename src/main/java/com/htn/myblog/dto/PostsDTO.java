@@ -34,7 +34,7 @@ public class PostsDTO {
     private Long order;
     @ApiModelProperty("parent Id")
     private Long parentId;
-    @ApiModelProperty("use")
+    @ApiModelProperty("use flag")
     private String useFlag;
 
     @ApiModelProperty("nguoi tao")
@@ -42,12 +42,14 @@ public class PostsDTO {
     @ApiModelProperty("ngay tao")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-    private Date regDt;
+    @Builder.Default
+    private Date regDt = new Date();
 
     @ApiModelProperty("nguoi sua")
     private Long editId;
     @ApiModelProperty("ngay sua")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
-    private Date editDt;
+    @Builder.Default
+    private Date editDt = new Date();
 }
